@@ -1,0 +1,27 @@
+{
+  "name": "pinia-plugin-syncstatetourl",
+  "version": "1.0.0",
+  "description": "sync your state to url to support share with others",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pinia",
+    "pinia-plugin"
+  ],
+  "author": "yinjialu <yinjialu1213@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "pinia": "^2.1.6",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.21",
+    "pinia": "^2.1.6",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  }
+}
