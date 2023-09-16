@@ -1,6 +1,6 @@
 # 使用方式
 
-## 安装
+## 安装插件
 
 ```ts
 import { createPinia } from 'pinia'
