@@ -2,7 +2,7 @@
   "name": "pinia-plugin-syncstatetourl",
   "version": "1.0.0",
   "description": "sync your state to url to support share with others",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
