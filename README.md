@@ -1,5 +1,9 @@
 # 使用方式
 
+```shell
+npm i --save pinia-plugin-syncstatetourl
+```
+
 ## 安装插件
 
 ```ts
