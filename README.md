@@ -18,6 +18,10 @@ import { defineStore } from 'pinia'
 export const useStateStore = defineStore('state', () => {
   const number = ref<number>(1);
   const str = ref('str')
+  return {
+    number,
+    str
+  }
 }, {
   syncToUrl: [
     { key: 'number' },
