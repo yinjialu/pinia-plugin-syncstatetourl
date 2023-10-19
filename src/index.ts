@@ -1,4 +1,4 @@
-import { PiniaPlugin, StateTree, SubscriptionCallbackMutation } from 'pinia';
+import { PiniaPlugin, StateTree, SubscriptionCallbackMutation, StoreDefinition, Store } from 'pinia';
 import { useRoute, useRouter } from 'vue-router';
 import debounce from 'lodash/debounce';
 import { computed, unref } from 'vue';
@@ -73,9 +73,28 @@ export const PanelPluginSyncStateToUrl: PiniaPlugin = (context) => {
   ) {
     write({ ...store, ...initValue });
   }
+
+  // 支持手动同步状态到路由
+  store.$syncStateToUrl = () => {
+    write(store);
+  };
+
   // 监听状态变更同步到 url
   store.$subscribe((_mutation: SubscriptionCallbackMutation<StateTree>, state: StateTree) => {
     // todo 判断过滤是有配置的变量变化才同步
     write(state);
   });
 };
+
+export function createUseStoreWithSyncStateToUrl<Id extends string, S extends StateTree, G, A>(
+  storeDefinition: StoreDefinition<Id, S, G, A>
+): StoreDefinition<Id, S, G, A> {
+  type P = Parameters<StoreDefinition<Id, S, G, A>>;
+  const newUseStore = (...p: P): Store<Id, S, G, A> => {
+    const store = storeDefinition(...p);
+    store.$syncStateToUrl();
+    return store;
+  };
+  newUseStore.$id = storeDefinition.$id;
+  return newUseStore;
+}
