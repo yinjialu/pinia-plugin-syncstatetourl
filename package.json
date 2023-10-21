@@ -1,10 +1,14 @@
 {
   "name": "pinia-plugin-syncstatetourl",
-  "version": "1.0.1",
+  "version": "1.0.2-beta.2",
   "description": "sync your state to url to support share with others",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "release": "bumpp",
+    "prepublish": "npm run build & npm publish --tag=prerelease",
+    "publish": "npm run build & npm publish"
   },
   "keywords": [
     "pinia",
@@ -23,9 +27,14 @@
     "vue-router": "^4.2.4"
   },
   "peerDependencies": {
-    "lodash": "^4.17.21",
-    "pinia": "^2.1.6",
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "lodash": "^4.*",
+    "pinia": "^2.0.0",
+    "vue": "^3.*",
+    "vue-router": "^4.*"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.200",
+    "bumpp": "^9.2.0",
+    "typescript": "^5.2.2"
   }
 }
