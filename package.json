@@ -1,6 +1,6 @@
 {
   "name": "pinia-plugin-syncstatetourl",
-  "version": "1.0.2-beta.2",
+  "version": "1.0.2",
   "description": "sync your state to url to support share with others",
   "main": "src/index.js",
   "scripts": {
