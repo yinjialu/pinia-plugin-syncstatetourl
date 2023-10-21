@@ -2,7 +2,8 @@
   "name": "pinia-plugin-syncstatetourl",
   "version": "1.0.2",
   "description": "sync your state to url to support share with others",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
