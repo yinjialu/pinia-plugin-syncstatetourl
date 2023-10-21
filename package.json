@@ -4,7 +4,8 @@
   "description": "sync your state to url to support share with others",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "keywords": [
     "pinia",
@@ -27,5 +28,9 @@
     "pinia": "^2.0.0",
     "vue": "^3.*",
     "vue-router": "^4.*"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.200",
+    "typescript": "^5.2.2"
   }
 }
