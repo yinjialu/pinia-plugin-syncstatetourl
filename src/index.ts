@@ -1,8 +1,8 @@
 import { PiniaPlugin, StateTree, SubscriptionCallbackMutation, StoreDefinition, Store } from 'pinia';
-import { useRoute, useRouter } from 'vue-router';
 import debounce from 'lodash/debounce';
 import { computed, unref } from 'vue';
 import { normalizeOption } from './utils';
+import { useUrlSearchParamsStore } from './store/useUrlSearchParamsStore'
 
 export const PanelPluginSyncStateToUrl: PiniaPlugin = (context) => {
   // 获取到 options 配置
@@ -14,9 +14,8 @@ export const PanelPluginSyncStateToUrl: PiniaPlugin = (context) => {
   if (!syncToUrl) return;
 
   // 标准化配置
-  const route = useRoute();
-  const router = useRouter();
-  const query = computed(() => route.query);
+  const urlSearchParamsStore = useUrlSearchParamsStore()
+  const query = computed(() => urlSearchParamsStore.params);
   const syncToUrlOptions = syncToUrl.map(normalizeOption);
   // 读
   const read = () => {
@@ -51,13 +50,7 @@ export const PanelPluginSyncStateToUrl: PiniaPlugin = (context) => {
       return m;
     }, {} as StateTree);
 
-    router.replace({
-      ...route,
-      query: {
-        ...unref(query),
-        ...syncToUrlValue,
-      },
-    });
+    urlSearchParamsStore.updateParams(syncToUrlValue)
   }, 50);
 
   // 从url上读取内容用于 state 初始化
