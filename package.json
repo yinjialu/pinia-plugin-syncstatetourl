@@ -1,6 +1,6 @@
 {
   "name": "pinia-plugin-syncstatetourl",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "sync your state to url to support share with others",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,16 +22,16 @@
     "url": "git+https://github.com/yinjialu/pinia-plugin-syncstatetourl.git"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
-    "pinia": "^2.1.6",
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "lodash": "^4.*",
+    "pinia": "^2.0.0",
+    "vue": "^3.*",
+    "@vueuse/core": "^10.7.1"
   },
   "peerDependencies": {
     "lodash": "^4.*",
     "pinia": "^2.0.0",
     "vue": "^3.*",
-    "vue-router": "^4.*"
+    "@vueuse/core": "^10.*"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.200",
