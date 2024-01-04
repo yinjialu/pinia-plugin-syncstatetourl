@@ -1,6 +1,6 @@
 {
   "name": "pinia-plugin-syncstatetourl",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "sync your state to url to support share with others",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,7 +26,6 @@
     "pinia": "^2.0.0",
     "vue": "^3.*",
     "@vueuse/core": "^10.7.1"
-
   },
   "peerDependencies": {
     "lodash": "^4.*",
