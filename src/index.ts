@@ -1,17 +1,17 @@
-import { PiniaPlugin, StateTree, SubscriptionCallbackMutation, StoreDefinition, Store } from 'pinia';
+import type { PiniaPlugin, StateTree, SubscriptionCallbackMutation, StoreDefinition, Store } from 'pinia';
 import debounce from 'lodash/debounce';
 import { computed, unref } from 'vue';
 import { normalizeOption } from './utils';
 import { useUrlSearchParamsStore } from './store/useUrlSearchParamsStore'
 
+export { serializerForString, Serializer } from './utils'
+
 export const PanelPluginSyncStateToUrl: PiniaPlugin = (context) => {
   // 获取到 options 配置
   const {
-    options: { syncToUrl },
+    options: { syncToUrl = [] },
     store,
   } = context;
-
-  if (!syncToUrl) return;
 
   // 标准化配置
   const urlSearchParamsStore = useUrlSearchParamsStore()
@@ -67,7 +67,11 @@ export const PanelPluginSyncStateToUrl: PiniaPlugin = (context) => {
     write({ ...store, ...initValue });
   }
 
-  // 支持手动同步状态到路由
+  /**
+   * 在切换路由场景中，store 已经完成创建，useStore 获取到 store 不会触发 plugin 重新执行
+   * pinia 目前没有提供方法在 useStore 被调用时注册回调的能力
+   * 因此在调用 useStore() 后需要手动调用一次 store.$syncStateToUrl()，以在切换路由后恢复当前页面所需状态信息到路由
+   */
   store.$syncStateToUrl = () => {
     write(store);
   };
@@ -79,6 +83,11 @@ export const PanelPluginSyncStateToUrl: PiniaPlugin = (context) => {
   });
 };
 
+/**
+ * 包装 useStore，每次调用 useStore 自动调用 $syncStateToUrl()，支持切换页面等场景同步状态到链接
+ * @param storeDefinition 
+ * @returns useStore
+ */
 export function createUseStoreWithSyncStateToUrl<Id extends string, S extends StateTree, G, A>(
   storeDefinition: StoreDefinition<Id, S, G, A>
 ): StoreDefinition<Id, S, G, A> {
