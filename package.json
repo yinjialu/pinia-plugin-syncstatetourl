@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "release": "bumpp",
-    "prepublish": "npm run build & npm publish --tag=prerelease",
-    "publish": "npm run build & npm publish"
+    "npm:prepublish": "npm run build & npm publish --tag=prerelease",
+    "npm:publish": "npm run build & npm publish"
   },
   "keywords": [
     "pinia",
