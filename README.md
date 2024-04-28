@@ -12,10 +12,10 @@ npm i --save pinia-plugin-syncstatetourl
 
 ```ts
 import { createPinia } from 'pinia'
-import { PanelPluginSyncStateToUrl } from 'pinia-plugin-syncstatetourl'
+import { PiniaPluginSyncStateToUrl } from 'pinia-plugin-syncstatetourl'
 
 const pinia = createPinia()
-pinia.use(PanelPluginSyncStateToUrl)
+pinia.use(PiniaPluginSyncStateToUrl)
 ```
 
 ## 使用

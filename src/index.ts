@@ -6,7 +6,7 @@ import { useUrlSearchParamsStore } from './store/useUrlSearchParamsStore'
 
 export { serializerForString, Serializer } from './utils'
 
-export const PanelPluginSyncStateToUrl: PiniaPlugin = (context) => {
+export const PiniaPluginSyncStateToUrl: PiniaPlugin = (context) => {
   // 获取到 options 配置
   const {
     options: { syncToUrl = [] },
@@ -100,3 +100,7 @@ export function createUseStoreWithSyncStateToUrl<Id extends string, S extends St
   newUseStore.$id = storeDefinition.$id;
   return newUseStore;
 }
+
+// 兼容拼写错误
+export const PanelPluginSyncStateToUrl = PiniaPluginSyncStateToUrl
+export default PiniaPluginSyncStateToUrl
